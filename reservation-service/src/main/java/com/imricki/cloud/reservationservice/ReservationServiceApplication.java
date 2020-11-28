@@ -23,9 +23,8 @@ public class ReservationServiceApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Stream.of("Mark", "Jon", "Juan", "Fran")
-		.forEach(name -> reservationRepository.save(new Reservation(name)));
-		reservationRepository.findAll().forEach(name -> (System.out::println);
+		Stream.of("Mark", "Jon", "Juan", "Fran").forEach(name -> reservationRepository.save(new Reservation(name)));
+		reservationRepository.findAll().forEach(System.out::println);
 	}
 
 }
