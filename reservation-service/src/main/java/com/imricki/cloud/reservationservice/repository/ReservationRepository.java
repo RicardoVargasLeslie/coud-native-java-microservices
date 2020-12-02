@@ -8,4 +8,5 @@ import com.imricki.cloud.reservationservice.entity.Reservation;
 @RepositoryRestResource
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
+	Reservation findByReservationName(Reservation reservation);
 }
