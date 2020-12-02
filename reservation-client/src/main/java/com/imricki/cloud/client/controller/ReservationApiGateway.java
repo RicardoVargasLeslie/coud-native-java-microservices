@@ -16,7 +16,7 @@ import com.imricki.cloud.client.feing.ReservationReader;
 public class ReservationApiGateway {
 
 	private final ReservationReader reader;
-	
+
 	@Autowired
 	public ReservationApiGateway(ReservationReader reader) {
 		this.reader = reader;
@@ -24,8 +24,9 @@ public class ReservationApiGateway {
 
 	@GetMapping("/names")
 	public Collection<String> names() {
-		return this.reader.read().
-		stream().map(ReservationDto :: g)
+
+		return this.reader.read().stream()
+		.map(ReservationDto::getReservationName)
 		.collect(Collectors.toList());
 	}
 }
