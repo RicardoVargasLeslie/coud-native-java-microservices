@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.imricki.cloud.client.feing.ReservationDto;
 import com.imricki.cloud.client.feing.ReservationReader;
 
 @RestController
@@ -15,7 +16,7 @@ import com.imricki.cloud.client.feing.ReservationReader;
 public class ReservationApiGateway {
 
 	private final ReservationReader reader;
-
+	
 	@Autowired
 	public ReservationApiGateway(ReservationReader reader) {
 		this.reader = reader;
@@ -23,9 +24,8 @@ public class ReservationApiGateway {
 
 	@GetMapping("/names")
 	public Collection<String> names() {
-
 		return this.reader.read().
-		stream().map(item -> item.getReservationName())
+		stream().map(ReservationDto :: g)
 		.collect(Collectors.toList());
 	}
 }
