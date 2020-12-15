@@ -16,7 +16,7 @@ import com.imricki.cloud.reservation.repo.ReservationRepository;
 public class ReservationServiceApplication implements CommandLineRunner {
 
 	@Autowired
-	private final ReservationRepository reservationRepository;
+	private ReservationRepository reservationRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ReservationServiceApplication.class, args);
@@ -28,7 +28,6 @@ public class ReservationServiceApplication implements CommandLineRunner {
 		Stream.of("Josh", "Dr. Johnson", "Dr. Syer", "Dr. Pollack")
 				.forEach(n -> reservationRepository.save(new Reservation(n)));
 		reservationRepository.findAll().forEach(System.out::println);
-
 	}
 
 }
